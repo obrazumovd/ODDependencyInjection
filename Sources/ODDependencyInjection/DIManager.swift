@@ -22,19 +22,19 @@ struct DependencyInjector {
     }
 }
 
-@propertyWrapper struct Inject<T> {
-    var wrappedValue: T
+@propertyWrapper public struct Inject<T> {
+    public var wrappedValue: T
     
-    init() {
+    public init() {
         self.wrappedValue = DependencyInjector.resolve()
         print("Injected <-", self.wrappedValue)
     }
 }
 
-@propertyWrapper struct Provider<T> {
-    var wrappedValue: T
+@propertyWrapper public struct Provider<T> {
+    public var wrappedValue: T
     
-    init(wrappedValue: T) {
+    public init(wrappedValue: T) {
         self.wrappedValue = wrappedValue
         DependencyInjector.register(dependency: wrappedValue)
         print("Provided ->", self.wrappedValue)
